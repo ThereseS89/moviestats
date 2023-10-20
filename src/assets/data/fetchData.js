@@ -8,13 +8,23 @@ console.log('specials: ', specialsData, 'documentaries: ', documentariesData, 'f
 const data = [...specialsData, ...documentariesData, ...featureFilmsData] 
 
 // Hur många Filmer på varje språk
+const moviesPerLanguage = {};
+data.forEach((movie) => {
+	const language = movie.Language
+	if (moviesPerLanguage[language]) {
+		moviesPerLanguage[language] += 1;
+	} else {
+		moviesPerLanguage[language] = 1
+	}
+})
+
 
 export function getMovieLanguages() {
 	return {
-		labels: data.map(obj => obj.Language), 
+		labels: Object.keys(moviesPerLanguage), 
 		datasets: [{
 		label: "movies per language",
-		data: data.map(obj => obj.data),
+		data: Object.values(moviesPerLanguage),
 	}]
 	}
 }
@@ -45,3 +55,56 @@ export function getMoviesPerMonth() {
 		
 	
 }
+
+// Hämta datan till längd på filmer
+
+const moviesPerLength = {};
+data.forEach((movie) => {
+	const length = movie.Runtime;
+	if (moviesPerLength[length] ) {
+		moviesPerLength[length] += 1;
+	} else {
+		moviesPerLength[length] = 1;
+	}
+})
+
+
+export function getMovieLength() {
+	return {
+		labels: Object.keys(moviesPerLength), 
+		datasets: [{
+		label: "movies per length",
+		data: Object.values(moviesPerLength),
+	}]
+	}
+}
+
+// Hämta genre
+export function getGenres() {
+
+const genreMovies = {}	
+console.log(genreMovies)
+data.forEach((movie) => {
+	const genre = movie.Genre;
+	if (genre && genre !== 'undefined') {
+		if (genreMovies[genre] ) {
+		genreMovies[genre] += 1;
+	} else {
+		genreMovies[genre] = 1;
+	}
+	}
+	
+})
+
+
+
+
+	return {
+		labels: Object.keys(genreMovies), 
+		datasets: [{
+		label: "Different Genres",
+		data: Object.values(genreMovies),
+	}]
+	}
+}
+

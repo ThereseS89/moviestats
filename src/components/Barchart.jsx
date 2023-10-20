@@ -5,13 +5,18 @@ ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarEle
 
 const barConfig = getMoviesPerMonth()
 
+
 function BarChart() {
 	
 	return  (
 	
-		<Bar data={barConfig} />
+		<Bar data={barConfig} id="month-bar-chart"/>
+
 	
 	);
 }
+
+
+
 
 export default BarChart

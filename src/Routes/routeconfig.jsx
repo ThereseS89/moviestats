@@ -6,6 +6,7 @@ import MoviesGenre from "../Routes/Movies-genre.jsx";
 import MoviesLanguage from "../Routes/Movies-languages.jsx";
 import MoviesLength from "../Routes/Movies-length.jsx";
 import MoviesPerMonth from "../Routes/Movies-per-month.jsx";
+import SearchResultContainer from "../Routes/Search-movies-result";
 
 const router = createBrowserRouter ([
 	{
@@ -31,6 +32,10 @@ const router = createBrowserRouter ([
 					{
 						path: '/MoviesPerMonth',
 						element: <MoviesPerMonth />
+					},
+					{
+						path: '/SearchResultContainer',
+						element: <SearchResultContainer/>
 					}
 
 				]

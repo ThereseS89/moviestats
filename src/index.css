@@ -60,4 +60,13 @@
 	  align-items: center;
 	  height: 100%;
   }
+
+  #search-input {
+	  align-self: flex-end;
+	  margin-left: 30em;
+	  padding-left: 0.3em;
+	  
+  }
+
+ 
   

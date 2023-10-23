@@ -10,10 +10,12 @@ const MoviesLength = () => {
 	}
 
 	return (
-		<section>
-			<h2>Movies Length</h2>
-			<LineChart />
-			<button onClick={handlebtnClick}>NEXT</button>
+		<section className="flex">
+			<h2 className="chart-head">Movies Length</h2>
+			<div className="chart-container">
+				<LineChart />
+			</div>
+			<button className="chart-btn" onClick={handlebtnClick}>NEXT</button>
 		</section>
 
 	)

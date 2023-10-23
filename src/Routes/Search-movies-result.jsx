@@ -1,6 +1,8 @@
 import { useRecoilState } from 'recoil'
 import { resultState } from '../Atoms/searchResultState'
 
+
+
 const SearchResultContainer = () => {
 	const [SearchResult, setSearchResult ] = useRecoilState(resultState)
 	setSearchResult;
@@ -16,7 +18,6 @@ const SearchResultContainer = () => {
 			))
 
 			):(
-				
 				<p>Inga Filmer matchade</p>
 			)}
 		</section>

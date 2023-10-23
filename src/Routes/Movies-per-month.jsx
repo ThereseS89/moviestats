@@ -9,11 +9,13 @@ const MoviesPerMonth = () => {
 	}
 
 	return (
-		<section>
-			<h2>Movies</h2>
-			<BarChart />
+		<section className="flex">
+			<h2 className="chart-head">Movies</h2>
+			<div className="chart-container">
+				<BarChart />
+			</div>
 	
-		<button onClick={handlebtnClick}>next</button>
+		<button className="chart-btn" onClick={handlebtnClick}>next</button>
 		</section>
 
 	)

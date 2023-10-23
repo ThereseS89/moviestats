@@ -11,10 +11,12 @@ const MoviesLanguage = () => {
 
 
 	return (
-		<section>
-			<h2>Movies per language</h2>
-			<PieChart />
-			<button onClick={handlebtnClick}>NEXT</button>
+		<section className="flex">
+			<h2 className="chart-head">Movies per language</h2>
+			<div className="chart-container">
+				<PieChart />
+			</div>
+			<button className="chart-btn" onClick={handlebtnClick}>NEXT</button>
 		</section>
 	)
 }

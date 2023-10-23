@@ -1,0 +1,36 @@
+
+.flex {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.chart-head {
+	color: rgb(185, 140, 194);
+	margin: 1em;
+	border-bottom: 1px solid white;
+}
+
+.chart-container {
+	width: 600px;
+
+}
+
+.chart-btn {
+	align-self: end;
+	padding: 1em;
+	margin: 1em;
+	color: rgb(249, 225, 225);
+	border-radius: 1em;
+	font-weight: bold;
+	border: none;
+	transition: all ease-in-out 0.5s;
+	box-shadow: 3px 3px 2px 3px rgb(103, 103, 103);
+	background-color: rgb(185, 140, 194);
+}
+
+.custom-labels {
+	align-self: flex-start;
+	
+}

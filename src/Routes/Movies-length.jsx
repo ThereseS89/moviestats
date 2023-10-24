@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import LineChart from "../components/Linechart"
+import { motion, easeIn } from "framer-motion"
+
 
 const MoviesLength = () => {
 
@@ -11,11 +13,18 @@ const MoviesLength = () => {
 
 	return (
 		<section className="flex">
-			<h2 className="chart-head">Movies Length</h2>
+			<motion.h2 
+			initial= {{ opacity: 0}} 
+			animate={{ opacity: 1}} 
+			transition={{ duration: 0.75, ease: easeIn}}
+			className="chart-head">
+				Movies Length
+			</motion.h2>
+			
 			<div className="chart-container">
 				<LineChart />
 			</div>
-			<button className="chart-btn" onClick={handlebtnClick}>NEXT</button>
+			<motion.button className="chart-btn" onClick={handlebtnClick}>NEXT</motion.button>
 		</section>
 
 	)

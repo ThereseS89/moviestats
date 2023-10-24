@@ -6,11 +6,16 @@ import { RecoilRoot } from 'recoil'
 
 import './Stylesheets/chart.css'
 import './index.css'
+import './Stylesheets/search.css'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  
   <React.StrictMode>
     <RecoilRoot>
-    <RouterProvider router={router} />
+    
+      <RouterProvider router={router} />
+    
     </RecoilRoot>
   </React.StrictMode>,
 )

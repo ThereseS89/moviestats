@@ -1,0 +1,28 @@
+.search-result {
+	margin: 1em;
+}
+
+.head-search {
+	margin-top: 2em;
+	margin-bottom: 2em;
+	text-align: center;
+	align-self: center;
+
+}
+
+.search-result-container {
+	background-color: rgb(185, 140, 194); 
+	width: 200px;
+	padding: 1em;
+	margin: 1em;
+}
+
+.search-container {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: center;
+}
+
+.no-match-container {
+	align-self: flex-end;
+}

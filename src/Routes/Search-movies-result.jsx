@@ -8,17 +8,19 @@ const SearchResultContainer = () => {
 	setSearchResult;
 	console.log('Sökresultat: ', SearchResult)
 	return (
-		<section>
-
+		<section className='search-container'>
+			<h2 className='head-search'>Search Result</h2>
 			{SearchResult && Array.isArray(SearchResult) ? (
 				SearchResult.map((movieMatch) => (
-				<div key={movieMatch.index}>
-				<p>{movieMatch.Title}</p>
+				<div className='search-result-container' key={movieMatch.index}>
+				<p className='search-result'>{movieMatch.Title}</p>
 				</div>
 			))
 
 			):(
-				<p>Inga Filmer matchade</p>
+				<div className='no-match-container'>
+					<p className='search-result'>No movies matched</p>
+				</div>
 			)}
 		</section>
 	)

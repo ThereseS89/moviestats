@@ -5,7 +5,8 @@ import featureFilmsData from './featureFilms.json'
 
 console.log('specials: ', specialsData, 'documentaries: ', documentariesData, 'featureFilms: ', featureFilmsData )
 
-const data = [...specialsData, ...documentariesData, ...featureFilmsData] 
+const data = [...documentariesData, ...featureFilmsData, ...specialsData] 
+// Valde specials i slutet för att motverka bugg, då det inte finns några filmer i maj i specialsDatan.
 
 const sortedData = [ ...data ].sort((a, b) => {
 	if( a.Language > b.Language ) return -1
@@ -41,16 +42,17 @@ export function getMovieLanguages() {
 // Filmer per premiärmånad
 const moviesPerMonth = {}
 const monthNames = ['January', 'February', 'Mars', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
 data.forEach((movie) => {
 	const premiereDate = new Date(movie.Premiere);
 	const monthYear = `${monthNames[premiereDate.getMonth()]}`;
+	console.log(moviesPerMonth)
 
 if (moviesPerMonth[monthYear]) {
 	moviesPerMonth[monthYear] += 1;
 } else {
 	moviesPerMonth[monthYear] = 1
 }
-
 })
 
 export function getMoviesPerMonth() {

@@ -1,12 +1,28 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
+	const [showNav, setShowNav] = useState('false')
+
+	function handleClickNav() {
+			setShowNav(!showNav)
+		}
+		
+	
 	
 		return (
+			
 			<nav>
-				<ul>
-					<div className="background">
+				<FontAwesomeIcon
+					id="close-Icon" 
+					onClick={handleClickNav} 
+					icon={showNav ? faXmark : faBars} />
+			
+				<ul className={showNav ? 'nav-visible' : 'nav-hidden'}>
+					
 						<li 
 						className="li-start">
 						<NavLink to={'/'}>START</NavLink>
@@ -28,9 +44,10 @@ const NavBar = () => {
 						<NavLink to={'/SearchResultContainer'}>SEARCH</NavLink>
 						
 						</li>
-					</div>
 				</ul>
+
 			</nav>
+			
 		)
 	
 	}

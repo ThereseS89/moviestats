@@ -8,7 +8,8 @@ import NavBar from '../components/navbar'
 
 
 const Root = () => {
-
+	
+		
 	const location = useLocation()
 	return (
 		

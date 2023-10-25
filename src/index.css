@@ -8,7 +8,7 @@
 	background: rgb(4,4,4);
 	background: linear-gradient(90deg, rgba(4,4,4,1) 3%, rgba(84,84,84,1) 100%);
 	color: white;
-	font-family: monospace, sans-serif;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
   }
   
   .header-head {
@@ -20,6 +20,7 @@
 	display: flex;
 	padding: 0.8em;
 	border-bottom: 0.5px solid white;
+	font-family: 'Courier New', Courier, monospace;
   }
   
   .header-underline {
@@ -27,7 +28,7 @@
 	margin: 1em;
   }
 
-  .header-underline span {
+  .header-underline-movieflex {
 	  color: rgb(185, 140, 194);
 	  font-weight: bold;
 	  font-size: 1.2em;

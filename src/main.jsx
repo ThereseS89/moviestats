@@ -7,6 +7,7 @@ import { RecoilRoot } from 'recoil'
 import './Stylesheets/chart.css'
 import './index.css'
 import './Stylesheets/search.css'
+import './Stylesheets/navbar.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

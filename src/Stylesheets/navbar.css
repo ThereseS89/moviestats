@@ -1,0 +1,23 @@
+.nav-visible {
+	display: block;
+}
+
+.nav-hidden {
+	display: none;
+}
+
+nav {
+	padding: 1em;
+	position: absolute;
+	background-color: black;
+	min-width: 15em;
+	border-radius: 0em 0em 2em 0em ;
+	border-bottom: 2px solid rgb(185, 140, 194);
+	border-right: 2px solid rgb(185, 140, 194); ;
+}
+
+nav li {
+	text-decoration: none;
+	padding: 0.5em;
+	list-style: none;
+}

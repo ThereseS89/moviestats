@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 
 
 const Startpage = () => {
+
 	
 	const navigate = useNavigate() 
 	const handlebtnClick = () => {

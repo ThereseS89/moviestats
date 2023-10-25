@@ -8,14 +8,10 @@ console.log('specials: ', specialsData, 'documentaries: ', documentariesData, 'f
 const data = [...documentariesData, ...featureFilmsData, ...specialsData] 
 // Valde specials i slutet för att motverka bugg, då det inte finns några filmer i maj i specialsDatan.
 
-const sortedData = [ ...data ].sort((a, b) => {
-	if( a.Language > b.Language ) return -1
-	else if (a.Language < b.Language ) return 1
-	else return 0
-})
+
 // Hur många Filmer på varje språk
 const moviesPerLanguage = {};
-sortedData.forEach((movie) => {
+data.forEach((movie) => {
 	const language = movie.Language
 	if (moviesPerLanguage[language]) {
 		moviesPerLanguage[language] += 1;
@@ -23,6 +19,10 @@ sortedData.forEach((movie) => {
 		moviesPerLanguage[language] = 1
 	}
 })
+const sortedData = Object.entries(moviesPerLanguage).sort((a, b) => b[1] -a[1]).reduce((acc, [language, count]) => {
+	acc[language] = count;
+	return acc
+}, {});
 
 
 export function getMovieLanguages() {
@@ -31,7 +31,7 @@ export function getMovieLanguages() {
 		labels: Object.keys(moviesPerLanguage), 
 		datasets: [{
 		label: "movies per language",
-		data: Object.values(moviesPerLanguage),
+		data: Object.values(sortedData),
 		backgroundColor: colors,
 		borderColor: '#000000',
 
@@ -40,31 +40,67 @@ export function getMovieLanguages() {
 }
 
 // Filmer per premiärmånad
-const moviesPerMonth = {}
-const monthNames = ['January', 'February', 'Mars', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+function countMoviesPerMonth(data) {
+
+const moviesPerMonth = {January: 0, February: 0, March: 0, April: 0, May: 0, June: 0, July: 0, August: 0, September: 0, October: 0, November: 0, December: 0};
 
 data.forEach((movie) => {
 	const premiereDate = new Date(movie.Premiere);
-	const monthYear = `${monthNames[premiereDate.getMonth()]}`;
-	console.log(moviesPerMonth)
+	const month = `${monthNames[premiereDate.getMonth()]}`;
 
-if (moviesPerMonth[monthYear]) {
-	moviesPerMonth[monthYear] += 1;
+if (moviesPerMonth[month]) {
+	moviesPerMonth[month] += 1;
 } else {
-	moviesPerMonth[monthYear] = 1
+	moviesPerMonth[month] = 1
 }
 })
+ return moviesPerMonth
+}
+
+const moviesPerMonthFeature = countMoviesPerMonth(featureFilmsData)
+const moviesPerMonthDocumentaries = countMoviesPerMonth(documentariesData)
+const moviesPerMonthSpecials = countMoviesPerMonth(specialsData)
+
+
 
 export function getMoviesPerMonth() {
-	const colors = ['rgb(215, 37, 158)', 'rgb(179, 37, 215)', 'rgb(52, 6, 63)', 'rgb(50, 68, 228)', 'rgb(50, 228, 189)', 'rgb(8, 104, 83)', 'rgb(74, 234, 60)', 'rgb(203, 216, 25)', 'rgb(216, 54, 25)', '#ffffff', 'rgb(216, 130, 25)', 'rgb(41, 25, 216)',]
+
+	const labels =	monthNames
+	const datasets = [ 
+		{
+		label: "FeatureFilms",
+		data: Object.values(moviesPerMonthFeature),
+		backgroundColor: 'rgb(215, 37, 158)', 
+		borderColor: '#000000',
+		borderWidth: 1
+		},
+
+		{
+		label: "Documentaries",
+		data: Object.values(moviesPerMonthDocumentaries),
+		backgroundColor: 'rgb(52, 6, 63)', 
+		borderColor: '#000000',
+		borderWidth: 1
+
+		},
+		{
+		label: "Specials",
+		data: Object.values(moviesPerMonthSpecials),
+		backgroundColor: 'rgb(179, 37, 215)', 	
+		borderColor: '#000000',	
+		borderWidth: 1
+		}
+	]
+
 	return {
-		labels: Object.keys(moviesPerMonth), 
-		datasets: [{
-		label: "movies per month",
-		data: Object.values(moviesPerMonth),
-		backgroundColor: colors
-	}]
-}	
+		labels,
+		datasets 
+	}
+		
+		
 }
 
 // Hämta datan till längd på filmer
@@ -80,12 +116,18 @@ data.forEach((movie) => {
 })
 
 
+const sortedDataRuntime = Object.entries(moviesPerLength).sort((a, b) => a[1] - b[1]).reduce((acc, [movie, count]) => {
+	acc[movie] = count;
+	return acc
+}, {});
+
 export function getMovieLength() {
 	return {
 		labels: Object.keys(moviesPerLength), 
 		datasets: [{
 		label: "movies per length",
-		data: Object.values(moviesPerLength),
+		data: Object.values(sortedDataRuntime),
+		borderColor: 'linear-gradient(90deg, rgba(4,4,4,1) 3%, rgba(84,84,84,1) 100%)'
 	}]
 	}
 }

@@ -2,6 +2,7 @@ import Search from "./Search"
 import {motion} from 'framer-motion'
 import { easeIn } from "framer-motion"
 
+
 const Header = () => {
 	
 	return (

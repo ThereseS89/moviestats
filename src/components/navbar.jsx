@@ -1,43 +1,86 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 const NavBar = () => {
-	const [showNav, setShowNav] = useState('false')
+	const [showNav, setShowNav] = useState(false)
 
 	function handleClickNav() {
 			setShowNav(!showNav)
 		}
-		
-	
 	
 		return (
 			
 			<nav>
-				<FontAwesomeIcon
-					id="close-Icon" 
-					onClick={handleClickNav} 
-					icon={showNav ? faXmark : faBars} />
-			
+				<div>
+					<motion.button 
+					onClick={handleClickNav}
+					animate={showNav ? 'open' : 'closed'}
+					className="nav-btn">
+						<motion.span 
+							className="bar"
+							variants={{
+										closed: {rotate: 0, y: 0},
+										open: { rotate: 45, y: 12},
+									}}>
+
+						</motion.span>
+
+						<motion.span 
+							className="bar"
+							variants={{
+									closed: {opacity: 1},
+									open: { opacity: 0},
+								}}>
+								
+						</motion.span>
+
+						<motion.span 
+							className="bar"
+							variants={{
+								closed: {rotate: 0},
+								open: { rotate: -45, y: -12},
+							}}>
+
+						</motion.span>
+
+					</motion.button>
+				</div>
+				
+			<AnimatePresence>
+			{showNav && ( 
+			<motion.div 
+			variants={{
+					open: { y: "0%", transition: {when: "beforeChildren"}},
+					closed: { y: "-200%", transition: {when: "afterChildren"}},
+					}}
+			initial="closed"
+			animate="open"
+			exit="closed"
+			className="nav-bar">
+
+			<motion.div variants={
+				{open: { y: "0%", opacity: 1},
+				closed: { y: "25%", opacity: 0}}
+			}>
 				<ul className={showNav ? 'nav-visible' : 'nav-hidden'}>
 					
 						<li 
 						className="li-start">
-						<NavLink to={'/'}>START</NavLink>
+						<NavLink onClick={() => setShowNav(false)}to={'/'}>START</NavLink>
 							</li>
 						<li className="li-language">
-						<NavLink to={'/MoviesLanguage'}>LANGUAGE</NavLink>
+						<NavLink onClick={ () => setShowNav(false)}to={'/MoviesLanguage'}>LANGUAGE</NavLink>
 						</li>
 						<li className="li-premiere">
-						<NavLink to={'/MoviesPerMonth'}>PREMIERES</NavLink>
+						<NavLink onClick={() => setShowNav(false)}to={'/MoviesPerMonth'}>PREMIERES</NavLink>
 						</li>
 						<li className="li-runtime">
-						<NavLink to={'/MoviesLength'}>RUNTIME</NavLink>
+						<NavLink onClick={() => setShowNav(false)}to={'/MoviesLength'}>RUNTIME</NavLink>
 						</li>
 						<li className="li-genre">
-						<NavLink to={'/MoviesGenre'}>GENRE</NavLink>
+						<NavLink onClick={() => setShowNav(false)}to={'/MoviesGenre'}>GENRE</NavLink>
 							
 						</li>
 						<li className="li-search">
@@ -45,7 +88,10 @@ const NavBar = () => {
 						
 						</li>
 				</ul>
-
+				</motion.div>
+				</motion.div> 
+			)}
+			</AnimatePresence>
 			</nav>
 			
 		)

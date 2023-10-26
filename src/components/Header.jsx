@@ -12,6 +12,7 @@ const Header = () => {
 					animate = {{ rotate: 360}}
 					transition = {{duration: 2, ease: easeIn}}
 					src='./src/assets/imgs/logo.png' />
+				
 				<h1 className="header-head"> MOVIESTATS </h1>
 				<p className="header-underline"> - A statistic adventure from </p> 
 				<motion.p 
@@ -22,8 +23,7 @@ const Header = () => {
 					exit={{ scale: 0}}>
 						MovieFlex
 				</motion.p> 
-			
-			
+				
 			<Search />
 		</header>
 	)

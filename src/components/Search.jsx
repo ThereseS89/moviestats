@@ -40,12 +40,14 @@ const Search = () => {
 
 	
 	return (
+		<div className='flex-row'>
+		<label> SEARCH MOVIE</label>
 		<input 
 			onChange={filterSearch} 
-			placeholder="Search movie" 
-			id="search-input" 
+			className="search-input" 
 		/>
 		
+		</div>
 	) 
 }
 

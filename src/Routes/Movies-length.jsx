@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import LineChart from "../components/Linechart"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { motion, easeIn } from "framer-motion"
+import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons"
 
 
 const MoviesLength = () => {
@@ -9,6 +12,9 @@ const MoviesLength = () => {
 
 	const handlebtnClick = () => {
 		navigate('/MoviesGenre')
+	}
+	const handlebtnClickBack = () => {
+		navigate('/MoviesPerMonth')
 	}
 
 	return (
@@ -22,9 +28,13 @@ const MoviesLength = () => {
 			</motion.h2>
 			
 			<div className="chart-container">
+				<div className="space-between">
+					<FontAwesomeIcon icon={faCircleArrowLeft} onClick={handlebtnClickBack}className="chart-btn"/>
+					<FontAwesomeIcon icon={faCircleArrowRight} onClick={handlebtnClick}className="chart-btn"/>
+				</div>
 				<LineChart />
 			</div>
-			<motion.button className="chart-btn" onClick={handlebtnClick}>NEXT</motion.button>
+			
 		</section>
 
 	)

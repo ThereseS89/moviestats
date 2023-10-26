@@ -19,10 +19,10 @@ const Root = () => {
 			<main>
 			<AnimatePresence key={location.pathname}>	
 			<motion.div 
-				initial={{scaleY: 0}}
-				animate={{scaleY: 1}}
+				initial={{x: '-100%'}}
+				animate={{x: 0}}
 				transition={{duration: 2, ease: [0.22, 1, 0.36, 1] }}
-				exit={{ scaleY: 0}}>
+				exit={{ x: '100%' }}>
 				<Outlet/>
 			</motion.div>
 			</AnimatePresence>	

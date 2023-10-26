@@ -13,11 +13,43 @@ nav {
 	min-width: 15em;
 	border-radius: 0em 0em 2em 0em ;
 	border-bottom: 2px solid rgb(185, 140, 194);
-	border-right: 2px solid rgb(185, 140, 194); ;
+	border-right: 2px solid rgb(185, 140, 194);
+	z-index: 1;
 }
 
+
 nav li {
-	text-decoration: none;
+	
 	padding: 0.5em;
-	list-style: none;
+	list-style: disc;
+	margin-left: 1em;
 }
+
+nav a {
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	transition: color 1s ease-in-out;
+}
+
+nav a:hover {
+	color: rgb(185, 140, 194);
+
+}
+
+.nav-btn {
+	background-color: black;
+	border: none;
+
+}
+
+.bar {
+	background-color: white;
+	display: block;
+	width: 3em;
+	height: 0.4em;
+	margin-bottom: 0.5em;
+	border-radius: 1em;
+	
+}
+

@@ -1,5 +1,6 @@
 import { useRecoilState } from 'recoil'
 import { resultState } from '../Atoms/searchResultState'
+import { motion } from 'framer-motion'
 
 
 const SearchResultContainer = () => {
@@ -22,9 +23,10 @@ const SearchResultContainer = () => {
 		<div className='search-container'>
 			{SearchResult && Array.isArray(SearchResult) ? (
 				SearchResult.map((movieMatch) => (
-				<div className='search-result-container' key={movieMatch.index}>
+				<motion.div 
+				whileHover={{ scale: 1.2 }}className='search-result-container' key={movieMatch.index}>
 				<p className='search-result'>{movieMatch.Title}</p>
-				</div>
+				</motion.div>
 			))
 
 			) :(

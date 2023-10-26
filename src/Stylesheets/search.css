@@ -15,14 +15,41 @@
 	width: 200px;
 	padding: 1em;
 	margin: 1em;
+	border-radius: 1em;
+	box-shadow: 2px 2px 2px 1px #504f4f;
 }
 
 .search-container {
 	display: flex;
 	flex-flow: wrap;
 	justify-content: center;
+	
 }
 
 .no-match-container {
 	align-self: flex-end;
+}
+
+.search-input {
+	padding: 0.3em;
+	color:rgb(97, 112, 134);
+	border-radius: 1em;
+	border:rgb(185, 140, 194) 2px solid;
+	font-size: 1em;
+}
+
+
+label {
+	align-self: start;
+	color:white;
+	font-weight: bold;
+	margin-bottom: 0.3em;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	margin-left: auto;
 }

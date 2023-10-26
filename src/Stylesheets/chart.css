@@ -19,19 +19,25 @@
 }
 
 .chart-btn {
-	align-self: end;
+	align-self: flex-end;
 	padding: 1em;
 	margin: 1em;
 	color: rgb(249, 225, 225);
 	border-radius: 1em;
 	font-weight: bold;
 	border: none;
-	transition: all ease-in-out 0.5s;
-	box-shadow: 3px 3px 2px 3px rgb(103, 103, 103);
+	box-shadow: 2px 2px 1px 1px rgb(103, 103, 103);
 	background-color: rgb(185, 140, 194);
+	cursor: pointer;
 }
 
 .custom-labels {
 	align-self: flex-start;
 	
 }
+
+.space-between {
+	display: flex;
+	justify-content: space-between;
+}
+

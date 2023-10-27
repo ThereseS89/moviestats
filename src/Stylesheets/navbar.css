@@ -1,8 +1,8 @@
-.nav-visible {
+.visible {
 	display: block;
 }
 
-.nav-hidden {
+.hidden {
 	display: none;
 }
 

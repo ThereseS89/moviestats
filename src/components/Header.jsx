@@ -1,19 +1,21 @@
 import Search from "./Search"
 import {motion} from 'framer-motion'
 import { easeIn } from "framer-motion"
+import { NavLink } from "react-router-dom"
 
 
 const Header = () => {
 	
 	return (
 		<header>
-			
+				<NavLink to ={'/'}>
 				<motion.img
 					animate = {{ rotate: 360}}
 					transition = {{duration: 2, ease: easeIn}}
-					src='./src/assets/imgs/logo.png' />
-				
+					src='./src/assets/imgs/logo.png'/>
+				</NavLink>
 				<h1 className="header-head"> MOVIESTATS </h1>
+				
 				<p className="header-underline"> - A statistic adventure from </p> 
 				<motion.p 
 					className="header-underline-movieflex"

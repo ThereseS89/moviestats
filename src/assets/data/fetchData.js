@@ -2,24 +2,51 @@
 import specialsData from './specials.json'
 import documentariesData from './documentaries.json'
 import featureFilmsData from './featureFilms.json'
-import {colorsGenre } from './colors'
-
-
-console.log('specials: ', specialsData, 'documentaries: ', documentariesData, 'featureFilms: ', featureFilmsData )
+import {colorsGenre,
+		monthNames,
+		colors,
+		languageData} from './constants'
 
 const data = [ ...featureFilmsData, ...documentariesData, ...specialsData] 
 // Valde specials i slutet för att motverka bugg, då det inte finns några filmer i maj i specialsDatan.
 
 
 
+// Hur många Filmer på varje språk - Fick flytta ut detta till
+const moviesPerLanguage = {};
+languageData.forEach((movie) => {
+	const language = movie.Language
+	if (moviesPerLanguage[language]) {
+		moviesPerLanguage[language] += 1;
+	} else {
+		moviesPerLanguage[language] = 1
+	}
+})
+const sortedData = Object.entries(moviesPerLanguage).sort((a, b) => b[1] -a[1]).reduce((acc, [language, count]) => {
+	acc[language] = count;
+	return acc
+}, {});
+
+
+export function getMovieLanguages() {
+	console.log('sortedDAta: ', sortedData, 'moviesPerLanguage: ', moviesPerLanguage)
+	return {
+		labels: Object.keys(moviesPerLanguage), 
+		datasets: [{
+		label: "movies per language",
+		data: Object.values(sortedData),
+		backgroundColor: colors,
+		borderColor: '#000000',
+
+	}]
+	}
+}
+
+
 // Filmer per premiärmånad
 
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
 function countMoviesPerMonth(data) {
-
 const moviesPerMonth = {January: 0, February: 0, March: 0, April: 0, May: 0, June: 0, July: 0, August: 0, September: 0, October: 0, November: 0, December: 0};
-
 data.forEach((movie) => {
 	const premiereDate = new Date(movie.Premiere);
 	const month = `${monthNames[premiereDate.getMonth()]}`;
@@ -38,6 +65,7 @@ const moviesPerMonthDocumentaries = countMoviesPerMonth(documentariesData)
 const moviesPerMonthSpecials = countMoviesPerMonth(specialsData)
 
 
+//Hämtar premiärdatum
 
 export function getMoviesPerMonth() {
 
@@ -76,6 +104,8 @@ export function getMoviesPerMonth() {
 		
 }
 
+
+
 // Hämta datan till längd på filmer
 
 const moviesPerLength = {};
@@ -94,40 +124,52 @@ const sortedDataRuntime = Object.entries(moviesPerLength).sort((a, b) => a[1] - 
 	return acc
 }, {});
 
+console.log('längd: ', moviesPerLength)
+
+
 export function getMovieLength() {
 	return {
-		labels: Object.keys(moviesPerLength), 
+		labels:Object.keys(sortedDataRuntime) , 
 		datasets: [{
 		label: "movies per length",
 		data: Object.values(sortedDataRuntime),
-		borderColor: 'linear-gradient(90deg, rgba(4,4,4,1) 3%, rgba(84,84,84,1) 100%)'
+		borderColor: '#ffffff',
 	}]
 	}
 }
 
+
+
+
 // Hämta genre
 export function getGenres() {
-	
 
 const genreMovies = {}	
 console.log(genreMovies)
 data.forEach((movie) => {
 	const genre = movie.Genre;
+
+	if(!genre) {
+		movie.Genre = 'Documentaries';
+		genreMovies['Documentaries'] = (genreMovies['Documentaries'] || 0) + 1;
+	
+	} else {
 	
 	if (genreMovies[genre] ) {
 		genreMovies[genre] += 1;
 	} else {
 		genreMovies[genre] = 1;
 	}
-	
+	}
 })
 
 	return {
-		labels: Object.keys(genreMovies), 
+		labels:Object.keys(genreMovies) , 
 		className: "custom-label",
+
 		datasets: [{
-		label: "Different Genres",
-		data: Object.values(genreMovies),
+		label: 'movies', 
+		data: Object.values(genreMovies) ,
 		backgroundColor: colorsGenre
 	}]
 	}

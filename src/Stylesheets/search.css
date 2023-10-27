@@ -1,5 +1,11 @@
 .search-result {
-	margin: 1em;
+	text-align: left;
+	margin-bottom: 0.5em;
+}
+
+.search-result span {
+	color: rgb(185, 140, 194);
+	font-weight: bold;
 }
 
 .head-search {
@@ -11,7 +17,9 @@
 }
 
 .search-result-container {
-	background-color: rgb(185, 140, 194); 
+	background-color: rgb(69, 72, 77); 
+	border:rgb(185, 140, 194) 1px solid;
+	text-align: left;
 	width: 200px;
 	padding: 1em;
 	margin: 1em;
@@ -53,3 +61,4 @@ label {
 	align-items: flex-end;
 	margin-left: auto;
 }
+

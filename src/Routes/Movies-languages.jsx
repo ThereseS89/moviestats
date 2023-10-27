@@ -16,7 +16,7 @@ const MoviesLanguage = () => {
 	return (
 		<section className="flex">
 			<h2 className="chart-head">Movies per language</h2>
-			<div className="chart-container flex">
+			<div className="chart-container-pie flex">
 				<FontAwesomeIcon icon={faCircleArrowRight} onClick={handlebtnClick}className="chart-btn"/>
 				<PieChart />
 			</div>

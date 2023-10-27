@@ -5,8 +5,9 @@
   }
   
   body {
-	background: rgb(4,4,4);
+	
 	background: linear-gradient(90deg, rgba(4,4,4,1) 3%, rgba(84,84,84,1) 100%);
+	background-attachment: fixed;
 	color: white;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
   }
@@ -33,9 +34,30 @@
   .header-underline-movieflex {
 	  color: rgb(185, 140, 194);
 	  font-weight: bold;
-	  font-size: 1.2em;
+	  font-size: 1.2rem;
 	  margin-top: 1em;
   }
+
+  @media (max-width: 864px) {
+	.header-underline-movieflex {
+		font-size: 0.5rem;
+		margin-top: 3em;
+		
+	}
+  }
+@media (max-width: 600px) {
+	header {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+  }
+
+  main {
+	  margin-top: 4em; 
+  }
+}
+  
 
   main {
 	  height: 75vh;

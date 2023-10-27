@@ -1,10 +1,12 @@
-import { useState } from "react";
+
 import { NavLink } from "react-router-dom"
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { useRecoilState } from "recoil";
+import { showNavState } from "../Atoms/showNavState";
 
 const NavBar = () => {
-	const [showNav, setShowNav] = useState(false)
+	const [showNav, setShowNav] = useRecoilState(showNavState)
 
 	function handleClickNav() {
 			setShowNav(!showNav)
@@ -64,11 +66,11 @@ const NavBar = () => {
 				{open: { y: "0%", opacity: 1},
 				closed: { y: "25%", opacity: 0}}
 			}>
-				<ul className={showNav ? 'nav-visible' : 'nav-hidden'}>
+				<ul className={showNav ? 'visible' : 'hidden'}>
 					
 						<li 
 						className="li-start">
-						<NavLink onClick={() => setShowNav(false)}to={'/'}>START</NavLink>
+						<NavLink onClick={ () => setShowNav(false)} to={'/'}>START</NavLink>
 							</li>
 						<li className="li-language">
 						<NavLink onClick={ () => setShowNav(false)}to={'/MoviesLanguage'}>LANGUAGE</NavLink>

@@ -19,7 +19,7 @@ const SearchResultContainer = () => {
 		<section>
 		<h2 className='head-search'>Search Result</h2>
 		<div className='search-container'>
-			{SearchResult && Array.isArray(SearchResult) && SearchResult > 0 ? (
+			{SearchResult && Array.isArray(SearchResult) ? (
 				SearchResult.map((movieMatch) => (
 				<motion.div 
 				whileHover={{ scale: 1.2 }}className='search-result-container' key={movieMatch.index}>
